@@ -4,7 +4,7 @@ import java.io.IOException;
 import co.edu.uniquindio.poo.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+
 import javafx.scene.control.Button;
 
 public class menuprincipal {

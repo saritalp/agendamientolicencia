@@ -77,21 +77,8 @@ public class Transito implements Serializable {
         if ( esAdministrador  (ID, contrasena)) {
             return Administrador.obtenerInstancia();
         }
-    
-        System.out.println(clientes);
-        for (Cliente cliente : clientes) {
-            String Id = cliente.getID();
-            String contra = cliente.getContrasena();
-            System.out.println("ID " + Id);
-            System.out.println("Contra cliente " + contra);
-            if (ID.equals(ID) && contra.equals(contrasena)) {
-                
-                return cliente;
-            }
-
-           
-        }
-        throw new InicioFallidoException("Contraseña o correo incorrecto");
+        
+        else throw new InicioFallidoException("Contraseña o correo incorrecto");
 
     }
 

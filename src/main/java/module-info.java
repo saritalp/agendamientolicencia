@@ -4,5 +4,5 @@ module co.edu.uniquindio.poo {
     requires lombok;
 
     opens co.edu.uniquindio.poo to javafx.fxml;
-    exports co.edu.uniquindio.poo;
+    exports co.edu.uniquindio.poo.controller to javafx.fxml;
 }
