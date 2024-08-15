@@ -1,8 +1,8 @@
 package co.edu.uniquindio.poo.model;
 
 public enum TipoLicencia {
-    MOTO ("Moto"), CARRO ("Carro"), COMPLETA ("Completa"),;
-    
+    MOTO("Moto"), CARRO("Carro"), COMPLETA("Completa"),;
+
     private String nombre;
 
     public static TipoLicencia getTipoliscencia(String nombre) {
@@ -14,7 +14,7 @@ public enum TipoLicencia {
         return null;
     }
 
-    public static String [] getValueStrinds(){
+    public static String[] getValueStrinds() {
         var values = TipoLicencia.values();
         String[] strings = new String[values.length];
         for (int i = 0; i < values.length; i++) {
@@ -23,11 +23,9 @@ public enum TipoLicencia {
         return strings;
     }
 
-   
-    private TipoLicencia(String nombre){
+    private TipoLicencia(String nombre) {
         this.nombre = nombre;
     }
-       
 
     public String getNombre() {
         return nombre;

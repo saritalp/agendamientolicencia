@@ -1,28 +1,26 @@
 package co.edu.uniquindio.poo.model;
+
 import lombok.Getter;
 import lombok.Setter;
-@Getter 
+
+@Getter
 @Setter
 public class Cliente extends Usuario {
-        private String contrasena;
+    private String contrasena;
 
-
-
-public Cliente(String ID, String nombre, String telefono, String correo, String contrasena) {
+    public Cliente(String ID, String nombre, String telefono, String correo, String contrasena) {
         super(ID, nombre, telefono, correo);
-         this.contrasena= contrasena;
+        this.contrasena = contrasena;
     }
 
-@Override
+    @Override
     public void displayUserInfo() {
         System.out.println("Cliente: " + getID() + ", nombre: " + getNombre());
     }
 
-public Object getClientePorID() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getClientePorID'");
-}
- 
-
+    public Object getClientePorID() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getClientePorID'");
+    }
 
 }

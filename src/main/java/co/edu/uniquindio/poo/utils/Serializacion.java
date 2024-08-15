@@ -23,7 +23,7 @@ public class Serializacion {
     }
 
     
-    public static Transito obternerDatos() {
+    public static Transito obtenerDatos() {
         Transito transito = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(RUTA))) {
             transito = (Transito) ois.readObject();

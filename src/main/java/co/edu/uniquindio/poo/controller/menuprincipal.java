@@ -1,23 +1,20 @@
 package co.edu.uniquindio.poo.controller;
+
 import java.io.IOException;
 
 import co.edu.uniquindio.poo.App;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Button;
 
 public class menuprincipal {
 
     @FXML
-    private Button ADMINBT;
+    private Button ADMINBT, CCLIENTEBT;
 
     @FXML
-    private Button CCLIENTEBT;
-
-    @FXML
-    void adminaction(ActionEvent event) {
-         try {
+    void adminaction(ActionEvent event) throws IOException {
+        try {
             App.setRoot("iniciosesionadmin");
         } catch (IOException e) {
             e.printStackTrace();
@@ -25,17 +22,14 @@ public class menuprincipal {
 
     }
 
-    
     @FXML
     void clienteaction(ActionEvent event) {
-         try {
-            App.setRoot("solicitudcita");
+        try {
+            App.setRoot("solicituddecita");
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    }
-
-
+}

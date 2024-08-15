@@ -3,9 +3,9 @@ import lombok.Getter;
 import lombok.Setter;
 @Getter 
 @Setter
-public class Administrador extends Usuario {
+public class Administrador extends Usuario  {
     
-    private final String ID = "AdminTransito";
+    private final String ID = "123";
     private final String contrasena = "123";
     private static Administrador instancia;
 

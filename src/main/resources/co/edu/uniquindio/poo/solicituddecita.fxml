@@ -38,7 +38,7 @@
             <Font size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="agendarb" layoutX="26.0" layoutY="239.0" mnemonicParsing="false" onAction="#ingresaraction" prefHeight="61.0" prefWidth="140.0" style="-fx-background-color: #35745f;" text="AGENDAR" textAlignment="CENTER" textFill="#fcf9f9">
+      <Button fx:id="agendarbt" layoutX="26.0" layoutY="239.0" mnemonicParsing="false" onAction="#agendaraction" prefHeight="61.0" prefWidth="140.0" style="-fx-background-color: #35745f;" text="AGENDAR" textAlignment="CENTER" textFill="#fcf9f9">
          <font>
             <Font name="System Bold Italic" size="19.0" />
          </font>
@@ -92,5 +92,10 @@
             <TableColumn fx:id="tipocol" prefWidth="75.0" style="-fx-background-color: #35745f;" text="Tipo" />
         </columns>
       </TableView>
+      <Button fx:id="regresarbt" layoutX="26.0" layoutY="309.0" mnemonicParsing="false" onAction="#regresaraction" prefHeight="61.0" prefWidth="140.0" style="-fx-background-color: #35745f;" text="REGRESAR" textAlignment="CENTER" textFill="#fcf9f9">
+         <font>
+            <Font name="System Bold Italic" size="19.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

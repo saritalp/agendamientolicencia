@@ -41,7 +41,7 @@
             <Font size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="INGRESARBT" layoutX="343.0" layoutY="301.0" mnemonicParsing="false" onAction="#ingresaraction" prefHeight="21.0" prefWidth="92.0" style="-fx-background-color: #00FF0000;" text="INGRESAR" textAlignment="CENTER">
+      <Button fx:id="INGRESARBT" layoutX="294.0" layoutY="301.0" mnemonicParsing="false" onAction="#ingresaraction" prefHeight="31.0" prefWidth="109.0" style="-fx-background-color: #00FF0000;" text="INGRESAR" textAlignment="CENTER">
          <font>
             <Font name="System Bold Italic" size="15.0" />
          </font>
@@ -86,5 +86,10 @@
             <Image url="@Captura%20desde%202024-08-11%2022-56-04(3).png" />
          </image>
       </ImageView>
+      <Button fx:id="REGRESARBT1" layoutX="418.0" layoutY="301.0" mnemonicParsing="false" onAction="#regresaraction" prefHeight="31.0" prefWidth="109.0" style="-fx-background-color: #00FF0000;" text="REGRESAR" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

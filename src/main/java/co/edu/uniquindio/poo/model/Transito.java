@@ -10,87 +10,79 @@ import co.edu.uniquindio.poo.excepciones.ObjetoExistenteException;
 import co.edu.uniquindio.poo.excepciones.ObjetoNoExistenteException;
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 
 public class Transito implements Serializable {
-    private static Transito instance=null;
-    private List<Cita> citas=new ArrayList<>();
+    private static Transito instance = null;
+    private List<Cita> citas = new ArrayList<>();
     private List<Cliente> clientes = new ArrayList<>();
 
-  
-    
     private Transito(List<Cita> citas, List<Cliente> clientes) {
         this.citas = citas;
         this.clientes = clientes;
     }
 
     public Transito() {
-		
-	}
 
-	public  Transito getInstance(
-    ){
-        if(instance==null){
-            instance= new Transito(citas, clientes);
+    }
+
+    public Transito getInstance() {
+        if (instance == null) {
+            instance = new Transito(citas, clientes);
         }
         return instance;
     }
 
     public void registrarNuevoCliente(Cliente cliente) throws ObjetoExistenteException {
-         if (buscarClientePorID(cliente.getID()) != null) {
+        if (buscarClientePorID(cliente.getID()) != null) {
             throw new ObjetoExistenteException("El cliente ya está registrado.");
         }
         clientes.add(cliente);
-        
-       
+
     }
-       
-     
-     public Cliente buscarClientePorID(String id) {
+
+    public Cliente buscarClientePorID(String id) {
         return clientes.stream().filter((cliente) -> cliente.getClientePorID().equals(id)).findFirst().orElse(null);
     }
 
-
-
-          
-    public List<Cliente> getClientePorID(String ID){
+    public List<Cliente> getClientePorID(String ID) {
         return clientes.stream().filter((cliente) -> cliente.getClientePorID().equals(ID)).toList();
 
-   }
+    }
+
     public void eliminarCliente(String id) {
         Cliente cliente = buscarClientePorID(id);
-        if (cliente!= null) {
+        if (cliente != null) {
             clientes.remove(cliente);
         }
     }
-
 
     // Iniciar Sesion
 
     public Usuario iniciarSesion(String ID, String contrasena)
             throws InicioFallidoException, NoVerificadoException {
-        if (ID.equals("")||contrasena.equals("")){
+        if (ID.equals("") || contrasena.equals("")) {
             throw new InicioFallidoException("Credenciales no proporcionadas");
         }
 
-        if ( esAdministrador  (ID, contrasena)) {
+        if (esAdministrador(ID, contrasena)) {
             return Administrador.obtenerInstancia();
         }
-        
-        else throw new InicioFallidoException("Contraseña o correo incorrecto");
+
+        else
+            throw new InicioFallidoException("Contraseña o correo incorrecto");
 
     }
 
-
-     // Método para verificar si las credenciales corresponden a un administrador
+    // Método para verificar si las credenciales corresponden a un administrador
     private boolean esAdministrador(String ID, String contrasena) {
         Administrador administrador = Administrador.obtenerInstancia();
         return ID.equals(administrador.getID()) && contrasena.equals(administrador.getContrasena());
     }
 
-
-     public List<Cliente> listarClientes() {
+    public List<Cliente> listarClientes() {
         return clientes;
     }
 
@@ -107,68 +99,59 @@ public class Transito implements Serializable {
         }
     }
 
-
     public void crearCita(Cita cita) throws ObjetoExistenteException {
-        
+
         if (!buscarCitaPorId(cita.getIDCita())) {
             citas.add(cita);
         } else {
             throw new ObjetoExistenteException("La cita ya está registrada.");
-}
+        }
 
-       
     }
 
-    
-    
-       
-    public void actualizarCliente(Cliente cliente){
-        int index = clientes.indexOf(clientes.stream().filter((cli) -> cli.getClientePorID().equals(cliente.getClientePorID())).findFirst().orElse(null));
-        if (index!= -1) {
+    public void actualizarCliente(Cliente cliente) {
+        int index = clientes.indexOf(clientes.stream()
+                .filter((cli) -> cli.getClientePorID().equals(cliente.getClientePorID())).findFirst().orElse(null));
+        if (index != -1) {
             clientes.set(index, cliente);
         }
-       
+
     }
 
     public List<Cita> listarCitas() {
-         return citas;
-     }   
-
-
-
+        return citas;
+    }
 
     public boolean eliminarCitas(String IDCita) {
 
-            // Utilizar removeIf para eliminar la cita con el ID especificado
-            return citas.removeIf(cita-> cita.getIDCita().equals(IDCita));
-    
-}
-    public boolean buscarCitaPorId(String IDCita) {
-         for (Cita cita : citas) {
-             if (cita.getIDCita().equals(IDCita)) {
-                return true;
-          }
-         }
-            return false;
+        // Utilizar removeIf para eliminar la cita con el ID especificado
+        return citas.removeIf(cita -> cita.getIDCita().equals(IDCita));
+
     }
+
+    public boolean buscarCitaPorId(String IDCita) {
+        for (Cita cita : citas) {
+            if (cita.getIDCita().equals(IDCita)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void modificarCIta(String IDCita, Cita citaModificada) throws ObjetoNoExistenteException {
 
         for (Cita citaExistente : citas) {
             if (citaExistente.getIDCita().equals(IDCita)) {
-                 citaExistente.setLugar(citaModificada.getLugar());
+                citaExistente.setLugar(citaModificada.getLugar());
                 citaExistente.setIDCita(citaModificada.getIDCita());
                 citaExistente.setHora(citaModificada.getHora());
-                 citaExistente.setFecha(citaModificada.getFecha());
-                 citaExistente.setTipolicencia(null);
-        return;
-    }
-}
+                citaExistente.setFecha(citaModificada.getFecha());
+                citaExistente.setTipolicencia(null);
+                return;
+            }
+        }
 
-       
         throw new ObjetoNoExistenteException("El evento no fue encontrado");
     }
-
-
-    
 
 }
