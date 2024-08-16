@@ -44,11 +44,12 @@ public class Transito implements Serializable {
     }
 
     public Cliente buscarClientePorID(String id) {
-        return clientes.stream().filter((cliente) -> cliente.getClientePorID().equals(id)).findFirst().orElse(null);
+
+        return clientes.stream().filter((cliente) -> cliente.getID().equals(id)).findFirst().orElse(null);
     }
 
     public List<Cliente> getClientePorID(String ID) {
-        return clientes.stream().filter((cliente) -> cliente.getClientePorID().equals(ID)).toList();
+        return clientes.stream().filter((cliente) -> cliente.getID().equals(ID)).toList();
 
     }
 
@@ -61,22 +62,14 @@ public class Transito implements Serializable {
 
     // Iniciar Sesion
 
-    public Usuario iniciarSesion(String ID, String contrasena)
-            throws InicioFallidoException, NoVerificadoException {
-        if (ID.equals("") || contrasena.equals("")) {
-            throw new InicioFallidoException("Credenciales no proporcionadas");
-        }
-
+    public Usuario iniciarSesion(String ID, String contrasena) throws InicioFallidoException {
         if (esAdministrador(ID, contrasena)) {
             return Administrador.obtenerInstancia();
+        }else{
+            throw new InicioFallidoException("Credenciales no proporcionadas");
         }
+    }          
 
-        else
-            throw new InicioFallidoException("Contraseña o correo incorrecto");
-
-    }
-
-    // Método para verificar si las credenciales corresponden a un administrador
     private boolean esAdministrador(String ID, String contrasena) {
         Administrador administrador = Administrador.obtenerInstancia();
         return ID.equals(administrador.getID()) && contrasena.equals(administrador.getContrasena());
@@ -111,7 +104,7 @@ public class Transito implements Serializable {
 
     public void actualizarCliente(Cliente cliente) {
         int index = clientes.indexOf(clientes.stream()
-                .filter((cli) -> cli.getClientePorID().equals(cliente.getClientePorID())).findFirst().orElse(null));
+                .filter((cli) -> cli.getID().equals(cliente.getID())).findFirst().orElse(null));
         if (index != -1) {
             clientes.set(index, cliente);
         }

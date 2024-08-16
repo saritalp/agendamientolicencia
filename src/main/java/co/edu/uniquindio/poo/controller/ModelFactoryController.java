@@ -26,12 +26,8 @@ public class ModelFactoryController {
         return instance;
     }
 
-    public Usuario iniciarSesion(String ID, String contraseña)
-        throws InicioFallidoException, NoVerificadoException{
-            Transito transito= Serializacion.obtenerDatos();
-            return transito.iniciarSesion(ID, contraseña);
-        }
-
+   
+        
     public void crearCita(String IDCita, String hora, String lugar, String nombre, LocalDate fecha,
             SingleSelectionModel<TipoLicencia> tipolicencia) throws ObjetoExistenteException {
             Transito transito = Serializacion.obtenerDatos();
@@ -68,8 +64,11 @@ public List<Cita> listarCitas() {
 
 
 
-
-   
+public Usuario iniciarSesion(String ID, String contrasena) throws InicioFallidoException, NoVerificadoException {
+    Transito transito= Serializacion.obtenerDatos();
+    return transito.iniciarSesion(ID, contrasena);
+}
+ 
 
 
 

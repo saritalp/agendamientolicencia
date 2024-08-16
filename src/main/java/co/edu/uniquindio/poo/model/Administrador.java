@@ -1,22 +1,28 @@
 package co.edu.uniquindio.poo.model;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 @Getter 
 @Setter
+@EqualsAndHashCode(callSuper=false)
 public class Administrador extends Usuario  {
     
-    private final String ID = "123";
-    private final String contrasena = "123";
+    private final String ID = "1";
+    private final String contrasena = "1";
     private static Administrador instancia;
 
     public Administrador(String ID, String nombre, String telefono, String correo) {
         super(ID, nombre, telefono, correo);
     }
+
+    public Administrador(){
+        super("123", "Admin", "telefono", "correo");
+    }
     
     public static Administrador obtenerInstancia() {
         
         if (instancia == null) {
-           instancia = new Administrador(null, null, null, null);
+            instancia = new Administrador();
         }
         
         return instancia;

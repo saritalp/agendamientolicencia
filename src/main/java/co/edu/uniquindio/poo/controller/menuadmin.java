@@ -1,19 +1,10 @@
-
 package co.edu.uniquindio.poo.controller;
 
 import java.io.IOException;
 
-
 import co.edu.uniquindio.poo.App;
-import co.edu.uniquindio.poo.excepciones.ObjetoExistenteException;
-import co.edu.uniquindio.poo.model.Cita;
-import co.edu.uniquindio.poo.model.TipoLicencia;
-
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -30,59 +21,56 @@ public class menuadmin {
     private Button eliminarbt;
 
     @FXML
-    private TableColumn<Cita, String> fechaadmintc, idadmintc, lugaradmintc, nombreadmintc, nombreadmintf, topiadmintc;
+    private TableColumn<?, ?> fechaadmintc;
 
     @FXML
     private DatePicker fechadmindp;
 
     @FXML
+    private TextField horatf;
+
+    @FXML
+    private TableColumn<?, ?> idadmintc;
+
+    @FXML
     private TextField idadmintf;
+
+    @FXML
+    private TableColumn<?, ?> lugaradmintc;
+
+    @FXML
+    private TableColumn<?, ?> lugaradmintc1;
 
     @FXML
     private TextField lugaradmintf;
 
     @FXML
+    private TableColumn<?, ?> nombreadmintc;
+
+    @FXML
+    private TextField nombreadmintf;
+
+    @FXML
     private Button regresarbt;
 
     @FXML
-    private TextField horatf;
+    private TableView<?> tablaAdmin;
 
     @FXML
-    private ComboBox<TipoLicencia> tipoadmincb;
+    private ComboBox<?> tipoadmincb;
 
     @FXML
-    private TableView<Cita> tablaAdmin;
-
-    
+    private TableColumn<?, ?> tipodmintc;
 
     @FXML
-    void crearadmin(ActionEvent event) throws ObjetoExistenteException {
-        ModelFactoryController.getInstance().crearCita(idadmintf.getText(), horatf.getText(),lugaradmintf.getText(),nombreadmintf.getText(),fechadmindp.getValue(),tipoadmincb.getSelectionModel());
-                     
-;   }
+    void crearadmin(ActionEvent event) {
 
-    
-    @FXML
-    void eliminaradmi(ActionEvent event) {
-        Cita cita=tablaAdmin.getSelectionModel().getSelectedItem();
-        if (cita==null){
-            new Alert(AlertType.ERROR, "Debe seleccionar una cita").show();
-            return;
-        }
-
-        if(ModelFactoryController.getInstance().eliminarCitas(cita.getIDCita())==true) {
-            new Alert(AlertType.INFORMATION, "Cita eliminada con exito").show();
-            tablaAdmin.setItems(FXCollections.observableArrayList(ModelFactoryController.getInstance().listarCitas())); 
-        } else {
-            new Alert(AlertType.ERROR, "No se pudo eliminar la cita").show();
-
-        
-        tablaAdmin.refresh();
-
-        }
-     
     }
 
+    @FXML
+    void eliminaradmi(ActionEvent event) {
+
+    }
 
     @FXML
     void modificaradmin(ActionEvent event) {
@@ -90,9 +78,11 @@ public class menuadmin {
     }
 
     @FXML
-    void regresaradmin(ActionEvent event) throws IOException {
-             App.setRoot("menuprincipal");
-}
-       
+    void regresaradmin(ActionEvent event) {
+        try {
+            App.setRoot("menuprincipal");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-}
+}}

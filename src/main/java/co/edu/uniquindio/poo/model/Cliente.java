@@ -18,9 +18,7 @@ public class Cliente extends Usuario {
         System.out.println("Cliente: " + getID() + ", nombre: " + getNombre());
     }
 
-    public Object getClientePorID() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getClientePorID'");
-    }
+    
+
 
 }
