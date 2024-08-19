@@ -18,6 +18,7 @@ public class Transito implements Serializable {
     private static Transito instance = null;
     private List<Cita> citas = new ArrayList<>();
     private List<Cliente> clientes = new ArrayList<>();
+    private List<Cita> citasAgendadas= new ArrayList<>();
 
     private Transito(List<Cita> citas, List<Cliente> clientes) {
         this.citas = citas;
@@ -62,7 +63,7 @@ public class Transito implements Serializable {
 
     // Iniciar Sesion
 
-    public Usuario iniciarSesion(String ID, String contrasena) throws InicioFallidoException {
+    public Usuario iniciarSesion(String ID, String contrasena) throws InicioFallidoException, NoVerificadoException{
         if (esAdministrador(ID, contrasena)) {
             return Administrador.obtenerInstancia();
         }else{
@@ -117,7 +118,7 @@ public class Transito implements Serializable {
 
     public boolean eliminarCitas(String IDCita) {
 
-        // Utilizar removeIf para eliminar la cita con el ID especificado
+       
         return citas.removeIf(cita -> cita.getIDCita().equals(IDCita));
 
     }
@@ -139,7 +140,7 @@ public class Transito implements Serializable {
                 citaExistente.setIDCita(citaModificada.getIDCita());
                 citaExistente.setHora(citaModificada.getHora());
                 citaExistente.setFecha(citaModificada.getFecha());
-                citaExistente.setTipolicencia(null);
+                citaExistente.setTipolicencia(citaModificada.getTipolicencia());
                 return;
             }
         }
@@ -147,4 +148,23 @@ public class Transito implements Serializable {
         throw new ObjetoNoExistenteException("El evento no fue encontrado");
     }
 
+    public List<String> obtenerTipo() {
+        ArrayList<String> tipo = new ArrayList<>();
+        tipo.add("Carro");
+        tipo.add("Moto");
+        tipo.add("Completo");
+        return tipo;
+    }
+
+    public Cita agendarCita(Cita cita) {
+       
+        if(citas.remove(cita)){
+             citasAgendadas.add(cita);
+        }else {
+            throw new RuntimeException("La cita no se pudo agendar.");
+        }
+        return cita;
+    }
+    
+    
 }

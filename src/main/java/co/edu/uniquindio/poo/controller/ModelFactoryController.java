@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.uniquindio.poo.excepciones.InicioFallidoException;
@@ -13,6 +14,7 @@ import co.edu.uniquindio.poo.model.Transito;
 import co.edu.uniquindio.poo.model.Usuario;
 import co.edu.uniquindio.poo.utils.Serializacion;
 import javafx.scene.control.SingleSelectionModel;
+import javafx.util.Callback;
 
 
 public class ModelFactoryController {
@@ -29,9 +31,9 @@ public class ModelFactoryController {
    
         
     public void crearCita(String IDCita, String hora, String lugar, String nombre, LocalDate fecha,
-            SingleSelectionModel<TipoLicencia> tipolicencia) throws ObjetoExistenteException {
+            String tipo) throws ObjetoExistenteException {
             Transito transito = Serializacion.obtenerDatos();
-            Cita c= Cita.builder().IDCita(IDCita).hora(hora).lugar(lugar).nombre(nombre).fecha(fecha).tipolicencia(null).build();
+            Cita c= Cita.builder().IDCita(IDCita).hora(hora).lugar(lugar).nombre(nombre).fecha(fecha).tipolicencia(TipoLicencia.getTipoliscencia(tipo)).build();
             transito.crearCita(c);
                          
         Serializacion.guardarDatos(transito);
@@ -39,9 +41,9 @@ public class ModelFactoryController {
     }
 
     public void modificarCIta(String IDCita, String hora, String lugar, String nombre, LocalDate fecha,
-    SingleSelectionModel<TipoLicencia> tipolicencia) throws ObjetoExistenteException, ObjetoNoExistenteException {
+    String tipo) throws ObjetoExistenteException, ObjetoNoExistenteException {
     Transito transito = Serializacion.obtenerDatos();
-    Cita c= Cita.builder().IDCita(IDCita).hora(hora).lugar(lugar).nombre(nombre).fecha(fecha).tipolicencia(null).build();
+    Cita c= Cita.builder().IDCita(IDCita).hora(hora).lugar(lugar).nombre(nombre).fecha(fecha).tipolicencia(TipoLicencia.getTipoliscencia(tipo)).build();
     transito.modificarCIta(IDCita, c);
                  
     Serializacion.guardarDatos(transito);
@@ -68,9 +70,23 @@ public Usuario iniciarSesion(String ID, String contrasena) throws InicioFallidoE
     Transito transito= Serializacion.obtenerDatos();
     return transito.iniciarSesion(ID, contrasena);
 }
- 
 
 
 
+public ArrayList <String>obtenerTipo() {
+	ArrayList<String> tipo = new ArrayList<>();
+    Transito transito = Serializacion.obtenerDatos();
+    return(ArrayList<String>)
+    transito.obtenerTipo();
+    }
+
+
+public Cita agendarCita(Cita cita){
+   Transito transito = Serializacion.obtenerDatos();
+    Cita c= transito.agendarCita(cita);
+                 
+    Serializacion.guardarDatos(transito);
+    return c;
 
 }
+ }

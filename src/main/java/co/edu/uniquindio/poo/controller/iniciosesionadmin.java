@@ -29,29 +29,27 @@ public class iniciosesionadmin {
     private TextField USUARIOTF;
 
     @FXML
-    void ingresaraction(ActionEvent event) throws IOException, NoVerificadoException, InicioFallidoException {
+    void ingresaraction(ActionEvent event) throws IOException{
         try {
-            // Intenta iniciar sesión con el usuario y contraseña proporcionados
+          
             Usuario usuario = ModelFactoryController.getInstance().iniciarSesion(USUARIOTF.getText(), CONTRASENAPF.getText());
             
-            // Establece el usuario actual
             datosguardados.getInstance().setUsuarioActual(usuario);
         
-            // Verifica si el usuario es un Administrador y cambia la vista
+            
             if (datosguardados.getInstance().verificarIsAdmi()) {
                 App.setRoot("menuadmin");
             } else {
                 new Alert(AlertType.WARNING, "No eres administrador").show();
             }
         } catch (InicioFallidoException e) {
-            // Muestra un mensaje de advertencia en caso de fallo en el inicio de sesión
-            new Alert(AlertType.WARNING, e.getMessage()).show();
-        } catch (Exception e) {
-            // Muestra un mensaje de error en caso de una excepción inesperada
-            new Alert(AlertType.ERROR, "Ocurrió un error inesperado. Inténtalo nuevamente.").show();
-        }
+       
+           new Alert(AlertType.WARNING, "ERROR").show();
+        } catch (NoVerificadoException e) {
+            new Alert(AlertType.WARNING, "ERROR 2").show();
+    
     }
-
+    }
                
        
           

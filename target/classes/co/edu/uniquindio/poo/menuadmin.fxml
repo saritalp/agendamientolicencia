@@ -19,7 +19,7 @@
             <TableColumn fx:id="nombreadmintc" prefWidth="75.0" text="NOMBRE" />
             <TableColumn fx:id="fechaadmintc" prefWidth="72.0" text="FECHA" />
             <TableColumn fx:id="lugaradmintc" prefWidth="72.0" text="LUGAR" />
-            <TableColumn fx:id="lugaradmintc1" prefWidth="72.0" text="Hora" />
+            <TableColumn fx:id="horatc" prefWidth="72.0" text="HORA" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -55,9 +55,9 @@
       <TextField fx:id="lugaradmintf" layoutX="374.0" layoutY="301.0" prefHeight="26.0" prefWidth="177.0" />
       <ComboBox fx:id="tipoadmincb" layoutX="375.0" layoutY="238.0" prefHeight="26.0" prefWidth="175.0" />
       <DatePicker fx:id="fechadmindp" layoutX="375.0" layoutY="268.0" prefHeight="26.0" prefWidth="175.0" />
-      <Button layoutX="291.0" layoutY="349.0" mnemonicParsing="false" onAction="#crearadmin" style="-fx-background-color: #D8E1EA;" text="Crear" />
-      <Button fx:id="Modificarbt" layoutX="375.0" layoutY="349.0" mnemonicParsing="false" onAction="#modificaradmin" style="-fx-background-color: #D8E1EA;" text="Modificar" />
-      <Button fx:id="eliminarbt" layoutX="491.0" layoutY="349.0" mnemonicParsing="false" onAction="#eliminaradmi" style="-fx-background-color: #D8E1EA;" text="Eliminar" />
+      <Button layoutX="255.0" layoutY="349.0" mnemonicParsing="false" onAction="#crearadmin" style="-fx-background-color: #D8E1EA;" text="Crear" />
+      <Button fx:id="Modificarbt" layoutX="396.0" layoutY="349.0" mnemonicParsing="false" onAction="#modificaradmin" style="-fx-background-color: #D8E1EA;" text="Modificar" />
+      <Button fx:id="eliminarbt" layoutX="475.0" layoutY="349.0" mnemonicParsing="false" onAction="#eliminaradmi" style="-fx-background-color: #D8E1EA;" text="Eliminar" />
       <Button fx:id="regresarbt" layoutX="19.0" layoutY="361.0" mnemonicParsing="false" onAction="#regresaradmin" style="-fx-background-color: #D8E1EA;" text="Regresar" />
       <Label layoutX="25.0" layoutY="304.0" text="Hora:">
          <font>
@@ -65,5 +65,6 @@
          </font>
       </Label>
       <TextField fx:id="horatf" layoutX="79.0" layoutY="302.0" prefHeight="9.0" prefWidth="234.0" />
+      <Button fx:id="actualizarbt" layoutX="316.0" layoutY="349.0" mnemonicParsing="false" onAction="#actualizarcita" style="-fx-background-color: #D8E1EA;" text="Actualizar" />
    </children>
 </AnchorPane>
