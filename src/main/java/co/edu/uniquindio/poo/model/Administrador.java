@@ -7,8 +7,8 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper=false)
 public class Administrador extends Usuario  {
     
-    private final String ID = "1";
-    private final String contrasena = "1";
+    private final String ID = "admin transito";
+    private final String contrasena = "1234";
     private static Administrador instancia;
 
     public Administrador(String ID, String nombre, String telefono, String correo) {
